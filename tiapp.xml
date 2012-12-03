@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <property name="acs-oauth-secret-production" type="string">iW0Ui1WR6dhiA6FNLZ8DZzXhJFxadKKF</property>
+    <property name="acs-oauth-key-production" type="string">FONwiM7UXph9YoQFOLiSki0x3QgyUXlp</property>
+    <property name="acs-api-key-production" type="string">8s8NZzwZ8G10YzE2HeuQEpljdM6Jtxd0</property>
+    <property name="acs-oauth-secret-development" type="string">pWLuNVNIy0UVHBwsF2dj5SkNAeTwZ5O9</property>
+    <property name="acs-oauth-key-development" type="string">JM5Smilu7rNhjDmg4qjCmE880FnAFSN8</property>
+    <property name="acs-api-key-development" type="string">s8Ex3aMFJNZ8pXIzoEP4DwnqViNPAvmY</property>
+    <deployment-targets>
+        <target device="mobileweb">true</target>
+        <target device="iphone">true</target>
+        <target device="ipad">true</target>
+        <target device="android">false</target>
+        <target device="blackberry">false</target>
+    </deployment-targets>
+    <sdk-version>2.1.4.GA</sdk-version>
+    <id>com.pk.FunGather</id>
+    <name>FunGather</name>
+    <version>1.0</version>
+    <publisher>ryan</publisher>
+    <url>http://</url>
+    <description>not specified</description>
+    <copyright>2012 by ryan</copyright>
+    <icon>appicon.png</icon>
+    <persistent-wifi>false</persistent-wifi>
+    <prerendered-icon>false</prerendered-icon>
+    <statusbar-style>default</statusbar-style>
+    <statusbar-hidden>false</statusbar-hidden>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>ec5e1162-ed47-4dd9-a5f5-e4f358648e18</guid>
+    <property name="ti.ui.defaultunit">system</property>
+    <iphone>
+        <orientations device="iphone">
+            <orientation>Ti.UI.PORTRAIT</orientation>
+        </orientations>
+        <orientations device="ipad">
+            <orientation>Ti.UI.PORTRAIT</orientation>
+            <orientation>Ti.UI.UPSIDE_PORTRAIT</orientation>
+            <orientation>Ti.UI.LANDSCAPE_LEFT</orientation>
+            <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
+        </orientations>
+    </iphone>
+    <android xmlns:android="http://schemas.android.com/apk/res/android"/>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules>
+        <module platform="commonjs" version="2.3.0">ti.cloud</module>
+    </modules>
+</ti:app>
