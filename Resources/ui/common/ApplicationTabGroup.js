@@ -7,21 +7,20 @@ function ApplicationTabGroup(isTablet) {
 	}
 	else {
 		//Window          = require('ui/handheld/ApplicationWindow');
-		ExploreWindow   = require('/ui/handheld/ExploreWindow');
+		ShopListWindow  = require('/ui/handheld/ShopListWindow');
 		PerkWindow      = require('/ui/handheld/PerkWindow');
-		FeedWindow      = require('ui/handheld/FeedWindow');
+		ExploreWindow   = require('/ui/handheld/ExploreWindow');
 	}
 	//create app tabs, name the new windows with same names
-	var stringExplore    = '店',
+	var stringShopList    = '店',
 	    stringPerkView   = '卷',
-	    stringFeedView   = '粉';
+	    stringExplore   = '粉';
 	    
 	
 	//create window classes    
 	var winExplore = new ExploreWindow(stringExplore);
-	var //winExplore = new Window(L(stringExplore)),
 		winPerk  = new PerkWindow(L(stringPerkView)),
-		winFeed  = new FeedWindow(L(stringFeedView));
+		winShop  = new ShopListWindow(L(stringShopList));
 	
 	
 	var tabExplore = Ti.UI.createTab({
@@ -38,16 +37,16 @@ function ApplicationTabGroup(isTablet) {
 	});
 	winPerk.containingTab = tabPerkView;
 	
-	var tabFeedView = Ti.UI.createTab({
-		title: L(stringFeedView),
+	var tabShopView = Ti.UI.createTab({
+		title: L(stringShopList),
 		icon: '/images/KS_nav_views.png',
-		window: winFeed
+		window: winShop
 	});
-	winFeed.containingTab = tabFeedView;
-	
-	self.addTab(tabExplore);
+	winShop.containingTab = tabShopView;
+	self.addTab(tabShopView);
 	self.addTab(tabPerkView);
-	self.addTab(tabFeedView);	
+	self.addTab(tabExplore);
+		
 	
 	return self;
 };

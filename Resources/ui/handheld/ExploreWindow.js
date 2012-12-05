@@ -1,88 +1,75 @@
 function ExploreWindow(title) {
-	var self = Ti.UI.createWindow({
+
+	var win = Ti.UI.createWindow({
 		title:title,
 		backgroundColor:'black'
 	});
+
 	Ti.include('/ui/common/Data.js');
-		
-
-	
+	var ElementRow  = require('/ui/handheld/ElementRow');
 	var tableData = [];
-	var shopLength = 5; //to be removed and retrived from backend according to the users' record
-	var tableRowHeight = 110;
-	for (var shopId =1;shopId<=shopLength; shopId++) { //dont use shopId = 0;
+	for (var i =0;i<data.length; i++) {
+		data[i].index = i;//to be removed to the datastructure 
 
-        var row = Titanium.UI.createTableViewRow({
-	
-			height: tableRowHeight, hasChild: false, backgroundColor: 'black', selectedBackgroundColor: '#c4cde0', 
-			
-			classType:'shopTableRow', clickName:'shopTableRow',
-			borderColor:"red", borderWidth: "1"		
-		});
-		
-		var logoView = Ti.UI.createImageView({
-			width:320, height:tableRowHeight - 5,
-			image:'/images/ShopLogo_'+shopId+'.jpeg', // should be retrieve from the backend
-
-		});
-		
-		row.data = shopData[shopId];
-		row.add(logoView);
+		var row = new ElementRow(data[i],i,0);
 		tableData.push(row);
 	}
 
-    var shopTable = Ti.UI.createTableView({
-    	width:320,
-        data:tableData,
+	
+	var search = Titanium.UI.createSearchBar({
+		showCancel:false
+	});
+	search.addEventListener('blur',function(){
+		if(Ti.Platform.name === "android"){
+			Ti.API.info('Going to hide soft Keyboard as we are shifting focus away from the SearchBar.');
+			Ti.UI.Android.hideSoftKeyboard();
+		}	
+	});
+	// create table view
+	var tableview = Titanium.UI.createTableView({
+		data:tableData,
 		// search:search,
 		filterAttribute:'title',
-		backgroundColor:'black',
-	    className:"myShopTable"
-    });
-    
-    	
+	    className:"myTableView"
+	});
+	
   	function openPicExhWin(e, islongclick) {
 		// event data
 		var index = e.index;
 		var section = e.section;
 		var row = e.row;
 		var rowdata = e.rowData;
-		var clickName = row.clickName;
-		Ti.API.info('the clickName = '+clickName+row.clickName+rowdata.shopId+e.source);
-		if (clickName == 'shopTableRow'){
-			
-			var ShopDashboardWindow  = require('/ui/handheld/ShopDashboardWindow');
-			var winShop = new ShopDashboardWindow(row.data);
-			self.containingTab.open(winShop);
+		var classType = e.source.classType;
+		if (classType == 'exploreImageView'){
 
+			// var msg = 'row ' + row + ' index ' + index + ' ' + row.data.index + ' section ' + section  + ' row data ' + rowdata + 'classType' + classType;
+			// if (islongclick) {
+				// e.section.headerTitle = e.section.headerTitle + ' section has been long-clicked';
+				// msg = "LONGCLICK " + msg;
+			// } else {
+				// e.section.headerTitle = e.section.headerTitle + ' section has been clicked';
+			// }
+			// Titanium.UI.createAlertDialog({title:'Table View',message:msg}).show();
+			var PicWindow  = require('/ui/handheld/PicExhibitWindow');
+
+			var winPic = new PicWindow(row.data, win);
+			win.containingTab.open(winPic);
 		}
 		
 	}
 	// create table view event listener
-	shopTable.addEventListener('click', function(e)
+	tableview.addEventListener('click', function(e)
 	{
-		openPicExhWin(e,false);
+		openPicExhWin(e);
 	});
-	shopTable.addEventListener('longclick', function(e)
+	tableview.addEventListener('longclick', function(e)
 	{
 		openPicExhWin(e, true);
 	});
 	//add table view to the window
-	self.add(shopTable);
-	
-	var mapButton = Titanium.UI.createButton({
-		title:'地图'
-	});
-
-	mapButton.addEventListener('click', function()
-	{
-		var ShopMapWindow = require('/ui/handheld/ShopMapWindow');
-		var winMap = new ShopMapWindow(tableData, self);
-		self.containingTab.open(winMap);
-	});
-	self.rightNavButton = mapButton;
-    
-	return self;
+	win.add(tableview);
+	return win;
 };
+
 
 module.exports = ExploreWindow;
