@@ -5,12 +5,24 @@
 	var noLikeIcon         = '/images/noLiked.png';
 		// create table view data object
 	var shopData = [
-		{title:'Unknown Store', 	shopId:0,		addr:'Unknown',					city:'Unknown',			lati:0,				lon:0},
-		{title:'Macy\'s', 			shopId:1,		addr:'3165 Kifer Rd',			city:'Santa Clara',		lati:0,				lon:0},
-		{title:'一麻一辣', 			shopId:2,		addr:'1234 Qianmen Street',		city:'Beijing',			lati:39.97168911,	lon:116.51696264521209},	
-		{title:'上岛咖啡', 			shopId:3,		addr:'333 Gulou Street',		city:'Santa Clara',		lati:39.93168911,	lon:116.52696264521209},
-		{title:'我型你秀', 			shopId:4,		addr:'1234 Qianmen Street',		city:'Beijing',			lati:39.94168911,	lon:116.53696264521209},	
+		{title:'Unknown Store', 	shopId:0,		addr:'Unknown',					city:'Unknown',			lati:0,				lon:0,					color:''},
+		{title:'Macy\'s', 			shopId:1,		addr:'3165 Kifer Rd',			city:'Santa Clara',		lati:0,				lon:0,					color:'white'},
+		{title:'一麻一辣', 			shopId:2,		addr:'1234 Qianmen Street',		city:'Beijing',			lati:39.97168911,	lon:116.51696264521209,	color:'red'},	
+		{title:'上岛咖啡', 			shopId:3,		addr:'333 Gulou Street',		city:'Santa Clara',		lati:39.93168911,	lon:116.52696264521209,	color:'yellow'},
+		{title:'我型你秀', 			shopId:4,		addr:'1234 Qianmen Street',		city:'Beijing',			lati:39.94168911,	lon:116.53696264521209,	color:'white'},	
 		{title:'Macy\'s', 			shopId:5,		addr:'333 Gulou Street',		city:'Santa Clara',		lati:0,				lon:0},
+		];
+		
+	var perkData = [
+		{title:'会员卡',	perkId:0,		shopId:2,		expdate:'12/31',			value:'余额 123元'	},
+		{title:'会员卡',	perkId:1,		shopId:1,		expdate:'12/31',			value:'余额 2100元'	},
+		{title:'减价卷',	perkId:2,		shopId:2,		expdate:'1/15',				value:'立减 50元'	},	
+		{title:'减价卷',	perkId:3,		shopId:1,		expdate:'2/2',				value:'立减 20'	},
+		{title:'减价卷',	perkId:4,		shopId:3,		expdate:'3/2',				value:'8折'	},	
+		{title:'会员卡',	perkId:5,		shopId:4,		expdate:'6/31',				value:'余额 210元'	},
+		{title:'减价卷',	perkId:6,		shopId:1,		expdate:'3/3',				value:'立减 20元'	},
+		{title:'会员卡',	perkId:7,		shopId:3,		expdate:'12/31',			value:'余额 520元'	},	
+		{title:'减价卷',	perkId:8,		shopId:4,		expdate:'2/1',				value:'免费服务 1次'	},
 		];
 		
 		
