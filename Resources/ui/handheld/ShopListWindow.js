@@ -3,47 +3,17 @@
  		title:title,
  		backgroundColor:'black'
  	});
-	Ti.include('/ui/common/Data.js');
-	
- 
-	
-
- 	var tableData = [];
-	var shopLength = 5; //to be removed and retrived from backend according to the users' record
-	var tableRowHeight = 110;
-	for (var shopId =1;shopId<=shopLength; shopId++) { //dont use shopId = 0;
-
-        var row = Titanium.UI.createTableViewRow({
-	
-			height: tableRowHeight, hasChild: false, backgroundColor: 'black', selectedBackgroundColor: '#c4cde0', 
-			
-			classType:'shopTableRow', clickName:'shopTableRow',
-			borderColor:"red", borderWidth: "1"		
-		});
-		
-		var logoView = Ti.UI.createImageView({
-			width:320, height:tableRowHeight - 5,
-			image:'/images/ShopLogo_'+shopId+'.jpeg', // should be retrieve from the backend
-
- 
-		});
-		
-		row.data = shopData[shopId];
-		row.add(logoView);
- 		tableData.push(row);
- 	}
- 
-    var shopTable = Ti.UI.createTableView({
+ 	var that = this;
+	var shopTable = Ti.UI.createTableView({
     	width:320,
-        data:tableData,
-
+        data:[],
  		// search:search,
  		filterAttribute:'title',
 		backgroundColor:'black',
 	    className:"myShopTable"
     });
-    
- 	
+    this.shopTable = shopTable;
+ 
    	function openPicExhWin(e, islongclick) {
  		// event data
  		var index = e.index;
@@ -53,21 +23,16 @@
 		var clickName = row.clickName;
 		Ti.API.info('the clickName = '+clickName+row.clickName+rowdata.shopId+e.source);
 		if (clickName == 'shopTableRow'){
-			
 			var ShopDashboardWindow  = require('/ui/handheld/ShopDashboardWindow');
 			var winShop = new ShopDashboardWindow(row.data);
 			self.containingTab.open(winShop);
-
  		}
- 		
  	}
  	// create table view event listener
-	shopTable.addEventListener('click', function(e)
- 	{
+	shopTable.addEventListener('click', function(e) {
 		openPicExhWin(e,false);
  	});
-	shopTable.addEventListener('longclick', function(e)
- 	{
+	shopTable.addEventListener('longclick', function(e) {
  		openPicExhWin(e, true);
  	});
  	//add table view to the window
@@ -80,13 +45,53 @@
 	mapButton.addEventListener('click', function()
 	{
 		var ShopMapWindow = require('/ui/handheld/ShopMapWindow');
-		var winMap = new ShopMapWindow(tableData, self);
+		var winMap = new ShopMapWindow(self);
 		self.containingTab.open(winMap);
 	});
 	self.rightNavButton = mapButton;
-    
+	
+	/*
+	 * this part talks to server and issue callbacks
+	 */
+	var Client = require('/Client');
+ 	var client = new Client();
+ 	client.get({
+ 		func: Client.prototype.functions.getStoreAround,
+ 		object: {location: {x:0, y: 0}},
+		success: function(data){ that.createTableView(data) },
+		error: function(data, xhr) { that.onError(data, xhr) },
+ 	});
 	return self;
+}
 
+ShopListWindow.prototype.onError = function(data, xhr) {
+	Ti.API.info('shopListWindow error');
+}
+
+ShopListWindow.prototype.createTableView = function(data){
+ 	var tableData = [];
+ 	var shopLength = data.length;
+	// var shopLength = 5; //to be removed and retrived from backend according to the users' record
+	var tableRowHeight = 110;
+	for (var shopId =0; shopId<shopLength; shopId++) { //dont use shopId = 0;
+		Ti.API.info(shopId)
+		var singleRecord = data.record[shopId]
+        var row = Titanium.UI.createTableViewRow({
+			height: tableRowHeight, hasChild: false, backgroundColor: 'black', selectedBackgroundColor: '#c4cde0', 
+			classType:'shopTableRow', clickName:'shopTableRow',
+			borderColor:"red", borderWidth: "1"		
+		});
+		
+		var logoView = Ti.UI.createImageView({
+			width:320, height:tableRowHeight - 5,
+			image: singleRecord.image
+			// image:'/images/ShopLogo_'+shopId+'.jpeg', // should be retrieve from the backend
+		});
+		row.data = singleRecord;
+		row.add(logoView);
+ 		tableData.push(row);
+ 	}
+ 	this.shopTable.setData(tableData);
  };
  
 module.exports = ShopListWindow;

@@ -28,14 +28,6 @@ if (Ti.version < 1.8 ) {
 	var isTablet = osname === 'ipad' || (osname === 'android' && (width > 899 || height > 899));
 	
 	var Window;
-	if (isTablet) {
-		//Window = require('ui/tablet/ApplicationWindow');
-	}
-	else {
-		//Window = require('ui/handheld/ApplicationWindow');
-	}
-
-
 	var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
 	var theTabGroup = new ApplicationTabGroup();
 	if (osname === 'iphone' || osname === 'ipad') {

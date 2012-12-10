@@ -1,5 +1,12 @@
 function ApplicationTabGroup(isTablet) {
 	//create module instance
+	//
+	// Add global event handlers to hide/show custom indicator
+	//
+	Ti.include('/ui/loadingView.js');
+	Titanium.App.addEventListener('show_indicator', function(e){ showIndicator(e.msg); });
+	Titanium.App.addEventListener('hide_indicator', function(e){ hideIndicator(); });
+
 	var self = Ti.UI.createTabGroup();
 	var Window, ExploreWindow;
 	if (isTablet) {
@@ -18,10 +25,9 @@ function ApplicationTabGroup(isTablet) {
 	    
 	
 	//create window classes    
-	var winExplore = new ExploreWindow(stringExplore);
-		winPerk  = new PerkWindow(L(stringPerkView)),
+	var winExplore = new ExploreWindow(L(stringExplore));
+		winPerk  = new PerkWindow(L(stringPerkView));
 		winShop  = new ShopListWindow(L(stringShopList));
-	
 	
 	var tabExplore = Ti.UI.createTab({
 		title: L(stringExplore),
@@ -43,11 +49,10 @@ function ApplicationTabGroup(isTablet) {
 		window: winShop
 	});
 	winShop.containingTab = tabShopView;
+	
 	self.addTab(tabShopView);
 	self.addTab(tabPerkView);
 	self.addTab(tabExplore);
-		
-	
 	return self;
 };
 

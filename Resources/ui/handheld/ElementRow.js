@@ -81,7 +81,8 @@ function ElementRow(record, rowFormat){
     var exploreImage = Titanium.UI.createImageView({		
 		top:0, width:explorePicWidth, height:explorePicHeight, borderRadius:3,	
 		hires:true,	
-		image:imageUrlHeadString+index+".jpg",
+		image:record.image,
+		// imageUrlHeadString+index+".jpg",
 		//borderColor:"black", borderWidth: "1",	
 		classType:"exploreImageView"	
 	});

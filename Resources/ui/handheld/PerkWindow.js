@@ -3,19 +3,35 @@ function PerkWindow(title) {
 		title:title,
 		backgroundColor:'black'
 	});
-	Ti.include('/ui/common/Data.js');
-
-
+	this.win = win;
+	/*
+	 * this part talks to server and issue callbacks
+	 */
+	var that = this;
+	var Client = require('/Client');
+ 	var client = new Client();
+ 	client.get({
+ 		func: Client.prototype.functions.getPerkData,
+ 		object: {},
+		success: function(data){ that.createTableView(data) },
+		error: function(data, xhr) { that.onError(data, xhr) },
+ 	});
+ 	
+ 	return win;
+ }
 	
+PerkWindow.prototype.createTableView = function(perkData) {
 	var perkViewArr=[];
 	var shadowViewArr=[];
 	var topArr = [];
 	var topArr_shadow = [];
 	var shadowThick = 2;
-	var scrollViewHeight = 500;
-	
 	var titleHeight = 60;
-		
+	
+	var titleHeight_fold =  ((perkData.length==0) || (perkData.length==1) ) ? 0 :titleHeight_fold =100/(perkData.length-1) ;
+    Ti.API.info('mode2 fold height '+titleHeight_fold+' perk length'+perkData.length + ' '+100/(perkData.length-1) );
+
+	var scrollViewHeight = 500;
 	var conHeight = perkData.length *  titleHeight;
 	
 	var scrollView = Ti.UI.createScrollView({
@@ -24,19 +40,15 @@ function PerkWindow(title) {
 		height:scrollViewHeight,
 		contentHeight:conHeight
 	});
-
-	var titleHeight_fold =  ((perkData.length==0) || (perkData.length==1) ) ? 0 :titleHeight_fold =100/(perkData.length-1) ;
-    Ti.API.info('mode2 fold height '+titleHeight_fold+' perk length'+perkData.length + ' '+100/(perkData.length-1) );
-	
 	
 	//layout the perk view in two modes: 
 	//0: exhibit view
 	//1: fold view
 	var perkMode = 0;
-		
+	
 	for (var perkId=0; perkId<perkData.length; perkId++)
 	{
-		var perkView = new PerkViewTemplate(perkId);
+		var perkView = new PerkViewTemplate(perkId, perkData.record[perkId]);
 		var top_0 = perkId *  titleHeight;
 		perkView.top = top_0;
 		perkViewArr.push(perkView);
@@ -109,7 +121,8 @@ function PerkWindow(title) {
 			//perkMode = 1
 			{
 				if (onClickId == e.source.perkId) {
-					//perkViewArr[onClickId].animate({view:perkViewArr[onClickId],transition:Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT});
+					// perkViewArr[onClickId].animate({view:perkViewArr[onClickId + 1],transition:Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT});
+					scrollView.animate({view:perkViewArr[onClickId + 1],transition:Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT});
 				}
 				else {
 					
@@ -134,17 +147,15 @@ function PerkWindow(title) {
 
 	});
 	
-	win.add(scrollView);
+	this.win.add(scrollView);
 	
-	return win;
+	// return win;
 };
 
 module.exports = PerkWindow;
 
 
-function PerkViewTemplate(perkId) {
-	Ti.include('/ui/common/Data.js');
-	var perk = perkData[perkId];
+function PerkViewTemplate(perkId, perk) {
 	var	shop = shopData[perk.shopId];
 	//ui
 	var perkHeight = 400;
@@ -206,9 +217,6 @@ function PerkViewTemplate(perkId) {
 	backView.add(titleLabel);
 	backView.add(valueLabel);
 	backView.add(perkCard);
-	
-		
-
 	
 	return backView;
 

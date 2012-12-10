@@ -1,16 +1,18 @@
 // create table view data object
 	// Ti.API.info(record);
+	var allData = {};
+	
 	var imageUrlHeadString = 'http://thechive.files.wordpress.com/2010/01/hot-chive-hotties-';
 	var likeIcon           = '/images/liked.png';
 	var noLikeIcon         = '/images/noLiked.png';
 		// create table view data object
 	var shopData = [
-		{title:'Unknown Store', 	shopId:0,		addr:'Unknown',					city:'Unknown',			lati:0,				lon:0,					color:''},
-		{title:'Macy\'s', 			shopId:1,		addr:'3165 Kifer Rd',			city:'Santa Clara',		lati:0,				lon:0,					color:'white'},
-		{title:'一麻一辣', 			shopId:2,		addr:'1234 Qianmen Street',		city:'Beijing',			lati:39.97168911,	lon:116.51696264521209,	color:'red'},	
-		{title:'上岛咖啡', 			shopId:3,		addr:'333 Gulou Street',		city:'Santa Clara',		lati:39.93168911,	lon:116.52696264521209,	color:'yellow'},
-		{title:'我型你秀', 			shopId:4,		addr:'1234 Qianmen Street',		city:'Beijing',			lati:39.94168911,	lon:116.53696264521209,	color:'white'},	
-		{title:'Macy\'s', 			shopId:5,		addr:'333 Gulou Street',		city:'Santa Clara',		lati:0,				lon:0},
+		//{title:'Unknown Store', 	shopId:0,		addr:'Unknown',					city:'Unknown',			lati:0,				lon:0,					color:'', 	   	image:'/images/ShopLogo_1.jpeg'},
+		{title:'Macy\'s', 			shopId:1,		addr:'3165 Kifer Rd',			city:'Santa Clara',		lati:0,				lon:0,					color:'white', 	image:'/images/ShopLogo_1.jpeg'},
+		{title:'一麻一辣', 			shopId:2,		addr:'1234 Qianmen Street',		city:'Beijing',			lati:39.97168911,	lon:116.51696264521209,	color:'red',	image:'/images/ShopLogo_2.jpeg'},	
+		{title:'上岛咖啡', 			shopId:3,		addr:'333 Gulou Street',		city:'Santa Clara',		lati:39.93168911,	lon:116.52696264521209,	color:'yellow',	image:'/images/ShopLogo_3.jpeg'},
+		{title:'我型你秀', 			shopId:4,		addr:'1234 Qianmen Street',		city:'Beijing',			lati:39.94168911,	lon:116.53696264521209,	color:'white',	image:'/images/ShopLogo_4.jpeg'},	
+		{title:'Macy\'s', 			shopId:5,		addr:'333 Gulou Street',		city:'Santa Clara',		lati:0,				lon:0,	image:'/images/ShopLogo_1.jpeg'},
 		];
 		
 	var perkData = [
@@ -24,7 +26,6 @@
 		{title:'会员卡',	perkId:7,		shopId:3,		expdate:'12/31',			value:'余额 520元'	},	
 		{title:'减价卷',	perkId:8,		shopId:4,		expdate:'2/1',				value:'免费服务 1次'	},
 		];
-		
 		
 	var data = [
 		{title:'Alan', 		shopId:2,		liked:0,		likeCount:0,		picHeight:200,	hasChild:true, 	header:'A'},
@@ -89,3 +90,13 @@
 		{title:'Paris'},
 		{title:'Potsie'}
 	];
+	
+	for (var i=0;i<data.length;i++) {
+		data[i].image = imageUrlHeadString+i+".jpg";
+	}
+
+	allData.getStoreAround = {record: shopData, length: shopData.length };
+	allData.getPerkData = {record: perkData, length: perkData.length };
+	allData.getNewsFeed = {record: data, length: perkData.length };
+
+

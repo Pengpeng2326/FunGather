@@ -1,8 +1,28 @@
-function ShopMapWindow(record, tabGroup) {
+function ShopMapWindow(tabGroup) {
 	var win = Titanium.UI.createWindow({
 		title:'地图'
 	});
-	//ryan: to make all the icons showed in the map... have to do overlay not annotations? 
+	
+	this.win = win;
+	var that = this;
+
+	win.addEventListener('open', function(){
+		var Client = require('/Client');
+	 	var client = new Client();
+	 	client.get({
+	 		func: Client.prototype.functions.getStoreAround,
+	 		object: {},
+			success: function(data){ that.createTableView(data) },
+			error: function(data, xhr) { that.onError(data, xhr) },
+	 	});
+	});
+	
+	return win;
+}
+
+ShopMapWindow.prototype.createTableView = function(data) {
+	//ryan: to make all the icons showed in the map... have to do overlay not annotations?
+	var win = this.win; 
 	var isAndroid = false;
 	if (Titanium.Platform.name == 'android') {
 		isAndroid = true;
@@ -18,7 +38,7 @@ function ShopMapWindow(record, tabGroup) {
 	var shopData;
 	for(var index = 0; index<numAnnotations;index++)
 	{
-	    shopData = record[index+1].data;//ignore Macy's just a hack, should remove +1 later'
+	    shopData = data.record[index+1];//ignore Macy's just a hack, should remove +1 later'
 		Ti.API.info('this shop\'s title is '+shopData.title+shopData.shopId);
 		var streetImage = Titanium.Map.createAnnotation({
 			title:shopData.title,
@@ -212,10 +232,6 @@ function ShopMapWindow(record, tabGroup) {
 // 			
 		// }
 	// });
-
-	
-	
-	return win;
 };
 
 module.exports = ShopMapWindow;

@@ -4,14 +4,31 @@ function ExploreWindow(title) {
 		title:title,
 		backgroundColor:'black'
 	});
+	this.win = win;
+	
+	var that = this;
+	win.addEventListener('open', function(){
+		var Client = require('/Client');
+	 	var client = new Client();
+	 	client.get({
+	 		func: Client.prototype.functions.getNewsFeed,
+	 		object: {},
+			success: function(data){ that.createTableView(data) },
+			error: function(data, xhr) { that.onError(data, xhr) },
+	 	});
+	});
+		
+	return win;
+}
 
-	Ti.include('/ui/common/Data.js');
+ExploreWindow.prototype.createTableView = function(data) {
+	var win = this.win;
 	var ElementRow  = require('/ui/handheld/ElementRow');
 	var tableData = [];
 	for (var i =0;i<data.length; i++) {
-		data[i].index = i;//to be removed to the datastructure 
+		// data[i].index = i;//to be removed to the datastructure 
 
-		var row = new ElementRow(data[i],i,0);
+		var row = new ElementRow(data.record[i],i,0);
 		tableData.push(row);
 	}
 
@@ -68,8 +85,7 @@ function ExploreWindow(title) {
 	});
 	//add table view to the window
 	win.add(tableview);
-	return win;
+	// return win;
 };
-
 
 module.exports = ExploreWindow;
