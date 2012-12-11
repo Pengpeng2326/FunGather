@@ -60,7 +60,6 @@ Client.prototype.functions = {
 	getStoreAround: {url: 'getStoreAround'},
 	getPerkData: {url: 'getPerkData'},
 	getNewsFeed: {url: 'getNewsFeed'},
-	getUserStore: {url: 'getUserStore'},
 }
 
 Client.prototype.post = function(args) {
