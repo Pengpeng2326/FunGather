@@ -1,1 +1,0 @@
-/Users/kaining/code/FunGather/Resources/ui/handheld/PicExhibitWindow.js
