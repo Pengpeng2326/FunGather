@@ -16,7 +16,7 @@
 		];
 		
 	var perkData = [
-		{title:'会员卡',	perkId:0,		shopId:2,		expdate:'12/31',			value:'余额 123元'	},
+		{title:'会员卡',	perkId:0,		shopId:2,		expdate:'12/31',			value:'余额 123元'},
 		{title:'会员卡',	perkId:1,		shopId:1,		expdate:'12/31',			value:'余额 2100元'	},
 		{title:'减价卷',	perkId:2,		shopId:2,		expdate:'1/15',				value:'立减 50元'	},	
 		{title:'减价卷',	perkId:3,		shopId:1,		expdate:'2/2',				value:'立减 20'	},
@@ -95,6 +95,9 @@
 		data[i].image = imageUrlHeadString+i+".jpg";
 	}
 
+	for (var i=0; i<perkData.length; i++) {
+		perkData[i].shop = shopData[perkData[i].shopId - 1];
+	}
 	allData.getStoreAround = {record: shopData, length: shopData.length };
 	allData.getPerkData = {record: perkData, length: perkData.length };
 	allData.getNewsFeed = {record: data, length: perkData.length };
