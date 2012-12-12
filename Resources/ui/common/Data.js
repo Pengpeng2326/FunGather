@@ -93,11 +93,13 @@
 	
 	for (var i=0;i<data.length;i++) {
 		data[i].image = imageUrlHeadString+i+".jpg";
+		data[i].shop = shopData[data[i].shopId - 1];
 	}
 
 	for (var i=0; i<perkData.length; i++) {
 		perkData[i].shop = shopData[perkData[i].shopId - 1];
 	}
+	
 	allData.getStoreAround = {record: shopData, length: shopData.length };
 	allData.getPerkData = {record: perkData, length: perkData.length };
 	allData.getNewsFeed = {record: data, length: perkData.length };

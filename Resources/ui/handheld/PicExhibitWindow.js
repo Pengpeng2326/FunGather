@@ -7,7 +7,7 @@ function PicExhitbitWindow(record, tabWin)
     //Ti.include('/ui/handheld/Data.js');
     var picWidth = 320;
     var shopId = (record.shopId == null) ? 0 : record.shopId;//0 if null record shop
-    var imageURL = imageUrlHeadString+record.index+".jpg";
+    var imageURL = record.image;//imageUrlHeadString+record.index+".jpg";
     Ti.API.info('imageURL ' + imageURL);
     
 
@@ -20,7 +20,7 @@ function PicExhitbitWindow(record, tabWin)
 		
 		width:picWidth, height: 110,
 		top:0, left:0,
-		image:'/images/ShopLogo_'+shopId+'.jpeg',		
+		image:record.shop.image,		
 		classType: 'shopLogo'
 	});	
 	
@@ -73,7 +73,7 @@ function PicExhitbitWindow(record, tabWin)
     var picView = Ti.UI.createImageView({
     	top:0, width:picWidth, height:picWidth, borderRadius:3,	
 		hires:true,	
-		image:imageUrlHeadString+record.index+".jpg",
+		image:record.image,
     })
     picScrollView.add(picView);
 

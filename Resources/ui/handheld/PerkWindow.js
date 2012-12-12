@@ -52,16 +52,16 @@ PerkWindow.prototype.createTableView = function(perkData) {
 	{
 		var perk = perkData.record[perkId];
 			// need a better pull
-		for (var i = 0; i<shopData.length;i++ ) {
-			if (perk.shopId==shopData[i].shopId) { var shop = shopData[i]}
-		}
+		// for (var i = 0; i<shopData.length;i++ ) {
+			// if (perk.shopId==shopData[i].shopId) { var shop = shopData[i]}
+		// }
 		
-		var perkView =  new PerkViewTemplate(perk, shop);
+		var perkView =  new PerkViewTemplate(perk);
 		var top_0 = perkId *  titleHeight;
 		perkView.top = top_0;
 		perkViewArr.push(perkView);
 		topArr.push(top_0);
-		shopArr.push(shop);
+		// shopArr.push(shop);
 		
 		// if not the top one, draw a shadow on the top of the second card
 		if (perkId!=0) {
@@ -160,16 +160,16 @@ PerkWindow.prototype.createTableView = function(perkData) {
 				perkViewOnClick(e);
 			}
 			else {
-				if (shopArr[e.source.perkId]==null) {
-					Ti.API.info('the shopdata on perk # '+e.source.perkId+'is invalid');
-				}
-				else {				
+				// if (shopArr[e.source.perkId]==null) {
+					// Ti.API.info('the shopdata on perk # '+e.source.perkId+'is invalid');
+				// }
+				// else {				
 					var ShopDashboardWindow  = require('/ui/handheld/ShopDashboardWindow');
-					var shop = shopArr[e.source.perkId];
+					var shop = e.source.shop;
 					var winShop = new ShopDashboardWindow(shop);
 					win.containingTab.open(winShop);
 					
-				}
+				// }
 				  
 			}
 			
@@ -184,10 +184,11 @@ PerkWindow.prototype.createTableView = function(perkData) {
 
 
 
-function PerkViewTemplate(perk, shop) {
+function PerkViewTemplate(perk) {
 	//ui
 	var perkHeight = 400;
 	var perkId = perk.perkId;
+	var shop = perk.shop;
 	//var win = this.win;
 
 
@@ -203,16 +204,17 @@ function PerkViewTemplate(perk, shop) {
 		perkId:perkId
 	});
 	
+	
 	var shopLogo = Ti.UI.createImageView({
 		top:5,
 		left:5,
-		image:'/images/ShopLogo_'+shop.shopId+'.jpeg',
+		image: shop.image,
 		height:50,
 		width:100,
 		classtype:'perkViewShopLogo',
 		perkId:perkId
 	});
-			
+	shopLogo.shop = shop;		
 
 
 	

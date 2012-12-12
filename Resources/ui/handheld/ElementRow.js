@@ -4,7 +4,7 @@
 function ElementRow(record, rowFormat){
 	
 
-    Ti.include('/ui/common/Data.js');
+    // Ti.include('/ui/common/Data.js');
 
 	
 	// record has the type of SingleTermObj
@@ -19,8 +19,9 @@ function ElementRow(record, rowFormat){
 	var bottomwLabelViewHeight = explorePicHeight + 5;
 	var rowHeight              = bottomwLabelViewHeight + titleLabelViewHeight + rowMarginHeight + rowMarginHeight;
 	// need a better pull
-	var shopId                 = record.shopId;
-		
+	// var shopId                 = record.shopId;
+	var shop = record.shop;
+	
 	var row = Titanium.UI.createTableViewRow({
 	
 	height: "auto", hasChild: false, backgroundColor: '#black', selectedBackgroundColor: '#c4cde0', 
@@ -77,7 +78,7 @@ function ElementRow(record, rowFormat){
 		
 		hires:true,
 		
-		image:'/images/ShopLogo_'+shopId+'.jpeg',		
+		image:shop.image,		
 		
 		classType:'shopLogo'
 		
