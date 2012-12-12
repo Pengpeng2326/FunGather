@@ -9,13 +9,17 @@ function ElementRow(record, rowFormat){
 	
 	// record has the type of SingleTermObj
 	var index = record.index;
-	var profilePicSize         = 25;
+	var profilePicSize         = 50;
+	var shopLogoHeight         = 50;
+	var shopLogoWidth          = 80;
 	var explorePicWidth           = 300;
 	var explorePicHeight          = (record.picHeight!=null)?record.picHeight:explorePicWidth;
-	var titleLabelViewHeight   = 28;
+	var titleLabelViewHeight   = 50;
 	var rowMarginHeight        = 5;
 	var bottomwLabelViewHeight = explorePicHeight + 5;
 	var rowHeight              = bottomwLabelViewHeight + titleLabelViewHeight + rowMarginHeight + rowMarginHeight;
+	// need a better pull
+	var shopId                 = record.shopId;
 		
 	var row = Titanium.UI.createTableViewRow({
 	
@@ -34,18 +38,30 @@ function ElementRow(record, rowFormat){
 
         right: 3, left: 3, top: 6,  height: titleLabelViewHeight,
 
-        backgroundColor:"blue",
+        backgroundColor:"black",
 
     });
 	row.add(titleLabelView);
 	
+
+	var profileImage = Titanium.UI.createImageView({
+		
+		left:5, width:profilePicSize, height:profilePicSize, borderRadius:3,
+		
+		hires:true,
+		
+		image:"/iphone/appicon.png"
+		
+	});
+	titleLabelView.add(profileImage);
+
 	var titleLabel = Titanium.UI.createLabel({
 
-		color:'black',
+		color:'white',
 				
-		backgroundColor:'transparent', width:300, height: Ti.UI.SIZE,
+		backgroundColor:'transparent', width:100, height: Ti.UI.SIZE,
 		
-		top:5, left:0, bottom:5,
+		top:10, left:60, 
 		
 		font:{fontSize:13, fontWeight: 'bold'},
 		
@@ -55,18 +71,18 @@ function ElementRow(record, rowFormat){
 	
 	});	
 	titleLabelView.add(titleLabel);
-
-	var profileImage = Titanium.UI.createImageView({
+	var shopLogoImage = Titanium.UI.createImageView({
 		
-		right:5, width:profilePicSize, height:profilePicSize, borderRadius:3,
+		right:5, width:shopLogoWidth, height:shopLogoHeight, borderRadius:3,
 		
 		hires:true,
 		
-		image:"/iphone/appicon.png"
+		image:'/images/ShopLogo_'+shopId+'.jpeg',		
+		
+		classType:'shopLogo'
 		
 	});
-	titleLabelView.add(profileImage);
-
+	titleLabelView.add(shopLogoImage);
 
 
 

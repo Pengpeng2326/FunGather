@@ -4,6 +4,7 @@ function ShopMapWindow(tabGroup) {
 	});
 	
 	this.win = win;
+	this.tabGroup = tabGroup;
 	var that = this;
 
 	win.addEventListener('open', function(){
@@ -23,6 +24,7 @@ function ShopMapWindow(tabGroup) {
 ShopMapWindow.prototype.createTableView = function(data) {
 	//ryan: to make all the icons showed in the map... have to do overlay not annotations?
 	var win = this.win; 
+	var tabGroup = this.tabGroup;
 	var isAndroid = false;
 	if (Titanium.Platform.name == 'android') {
 		isAndroid = true;

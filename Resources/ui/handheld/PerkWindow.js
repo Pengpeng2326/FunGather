@@ -25,8 +25,10 @@ PerkWindow.prototype.createTableView = function(perkData) {
 	var shadowViewArr=[];
 	var topArr = [];
 	var topArr_shadow = [];
+	var shopArr = []; //shop data array index by perkId
 	var shadowThick = 2;
 	var titleHeight = 60;
+	var win = this.win;
 	
 	var titleHeight_fold =  ((perkData.length==0) || (perkData.length==1) ) ? 0 :titleHeight_fold =100/(perkData.length-1) ;
     Ti.API.info('mode2 fold height '+titleHeight_fold+' perk length'+perkData.length + ' '+100/(perkData.length-1) );
@@ -48,11 +50,18 @@ PerkWindow.prototype.createTableView = function(perkData) {
 	
 	for (var perkId=0; perkId<perkData.length; perkId++)
 	{
-		var perkView = new PerkViewTemplate(perkId, perkData.record[perkId]);
+		var perk = perkData.record[perkId];
+			// need a better pull
+		for (var i = 0; i<shopData.length;i++ ) {
+			if (perk.shopId==shopData[i].shopId) { var shop = shopData[i]}
+		}
+		
+		var perkView =  new PerkViewTemplate(perk, shop);
 		var top_0 = perkId *  titleHeight;
 		perkView.top = top_0;
 		perkViewArr.push(perkView);
 		topArr.push(top_0);
+		shopArr.push(shop);
 		
 		// if not the top one, draw a shadow on the top of the second card
 		if (perkId!=0) {
@@ -147,8 +156,21 @@ PerkWindow.prototype.createTableView = function(perkData) {
 			perkViewOnClick(e);
 		}
 		else if(e.source.classtype=='perkViewShopLogo') {
-			if (perkMode == 1) {
+			if (perkMode == 0) {
 				perkViewOnClick(e);
+			}
+			else {
+				if (shopArr[e.source.perkId]==null) {
+					Ti.API.info('the shopdata on perk # '+e.source.perkId+'is invalid');
+				}
+				else {				
+					var ShopDashboardWindow  = require('/ui/handheld/ShopDashboardWindow');
+					var shop = shopArr[e.source.perkId];
+					var winShop = new ShopDashboardWindow(shop);
+					win.containingTab.open(winShop);
+					
+				}
+				  
 			}
 			
 		}
@@ -160,16 +182,13 @@ PerkWindow.prototype.createTableView = function(perkData) {
 	// return win;
 };
 
-module.exports = PerkWindow;
 
 
-function PerkViewTemplate(perkId, perk) {
-	// need a better pull
-	for (var i = 0; i<shopData.length;i++ ) {
-		if (perk.shopId==shopData[i].shopId) { var shop = shopData[i]}
-	}
+function PerkViewTemplate(perk, shop) {
 	//ui
 	var perkHeight = 400;
+	var perkId = perk.perkId;
+	//var win = this.win;
 
 
 	var backView= Ti.UI.createView({
@@ -193,6 +212,9 @@ function PerkViewTemplate(perkId, perk) {
 		classtype:'perkViewShopLogo',
 		perkId:perkId
 	});
+			
+
+
 	
 	var titleLabel = Ti.UI.createLabel({
 		top:20,
@@ -265,3 +287,4 @@ function PerkViewTemplate(perkId, perk) {
 	return backView;
 
 }
+module.exports = PerkWindow;

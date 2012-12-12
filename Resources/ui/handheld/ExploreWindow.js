@@ -25,10 +25,18 @@ ExploreWindow.prototype.createTableView = function(data) {
 	var win = this.win;
 	var ElementRow  = require('/ui/handheld/ElementRow');
 	var tableData = [];
+	var shopArr = []; //shop data index by userpicture Indx
 	for (var i =0;i<data.length; i++) {
 		// data[i].index = i;//to be removed to the datastructure 
-
-		var row = new ElementRow(data.record[i],i,0);
+		// need a better pull
+		var singleData = data.record[i];
+		// for (var i = 0; i<shopData.length;i++ ) {
+			// if (singleData.shopId==shopData[i].shopId) { var shop = shopData[i];}
+			// else { shop = null;}
+		// }
+		// shopArr.push(shop);
+// 
+		var row = new ElementRow(singleData,i,0);
 		tableData.push(row);
 	}
 
@@ -71,6 +79,13 @@ ExploreWindow.prototype.createTableView = function(data) {
 
 			var winPic = new PicWindow(row.data, win);
 			win.containingTab.open(winPic);
+		}
+		else if(classType == 'shopLogo')
+		{
+			// var shop = shopArr[index];
+			// var winShop = new ShopDashboardWindow(shop);
+			// win.containingTab.open(winShop);
+
 		}
 		
 	}
