@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TiPublicAPI.m \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TiPublicAPI.h
+  /Users/kaining/code/FunGather/build/iphone/Classes/TiPublicAPI.m \
+  /Users/kaining/code/FunGather/build/iphone/Classes/TiPublicAPI.h

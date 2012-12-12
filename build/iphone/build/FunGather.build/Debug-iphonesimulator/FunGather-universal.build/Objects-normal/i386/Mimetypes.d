@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/Mimetypes.m \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/Mimetypes.h
+  /Users/kaining/code/FunGather/build/iphone/Classes/Mimetypes.m \
+  /Users/kaining/code/FunGather/build/iphone/Classes/Mimetypes.h

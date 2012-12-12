@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/ApplicationRouting.m \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/ApplicationRouting.h
+  /Users/kaining/code/FunGather/build/iphone/Classes/ApplicationRouting.m \
+  /Users/kaining/code/FunGather/build/iphone/Classes/ApplicationRouting.h

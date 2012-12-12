@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TiThreading.m \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TiThreading.h
+  /Users/kaining/code/FunGather/build/iphone/Classes/TiThreading.m \
+  /Users/kaining/code/FunGather/build/iphone/Classes/TiThreading.h

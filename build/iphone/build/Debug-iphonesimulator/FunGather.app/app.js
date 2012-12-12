@@ -1,1 +1,1 @@
-/Users/yolanda0120/Documents/gitsub/FunGather/Resources/app.js
+/Users/kaining/code/FunGather/Resources/app.js

@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/AsyncUdpSocket.m \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/AsyncUdpSocket.h
+  /Users/kaining/code/FunGather/build/iphone/Classes/AsyncUdpSocket.m \
+  /Users/kaining/code/FunGather/build/iphone/Classes/AsyncUdpSocket.h

@@ -1,24 +1,24 @@
 dependencies: \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TiDOMCDATANodeProxy.m \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TiDOMCDATANodeProxy.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TiDOMTextNodeProxy.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TiProxy.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TiBase.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TiThreading.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TiPublicAPI.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TiEvaluator.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/KrollContext.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/headers/TiCore/TiCore.h \
+  /Users/kaining/code/FunGather/build/iphone/Classes/TiDOMCDATANodeProxy.m \
+  /Users/kaining/code/FunGather/build/iphone/Classes/TiDOMCDATANodeProxy.h \
+  /Users/kaining/code/FunGather/build/iphone/Classes/TiDOMTextNodeProxy.h \
+  /Users/kaining/code/FunGather/build/iphone/Classes/TiProxy.h \
+  /Users/kaining/code/FunGather/build/iphone/Classes/TiBase.h \
+  /Users/kaining/code/FunGather/build/iphone/Classes/TiThreading.h \
+  /Users/kaining/code/FunGather/build/iphone/Classes/TiPublicAPI.h \
+  /Users/kaining/code/FunGather/build/iphone/Classes/TiEvaluator.h \
+  /Users/kaining/code/FunGather/build/iphone/Classes/KrollContext.h \
+  /Users/kaining/code/FunGather/build/iphone/headers/TiCore/TiCore.h \
   headers/TiCore/Ti.h headers/TiCore/TiBase.h \
   headers/TiCore/TiContextRef.h headers/TiCore/TiObjectRef.h \
   headers/TiCore/TiValueRef.h headers/TiCore/WebKitAvailability.h \
   headers/TiCore/TiStringRef.h headers/TiCore/TiStringRefCF.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/headers/TiCore/TiContextRefPrivate.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/KrollCallback.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/KrollObject.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TIDOMCharacterDataProxy.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/TiDOMNodeProxy.h \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/GDataXMLNode.h \
+  /Users/kaining/code/FunGather/build/iphone/headers/TiCore/TiContextRefPrivate.h \
+  /Users/kaining/code/FunGather/build/iphone/Classes/KrollCallback.h \
+  /Users/kaining/code/FunGather/build/iphone/Classes/KrollObject.h \
+  /Users/kaining/code/FunGather/build/iphone/Classes/TIDOMCharacterDataProxy.h \
+  /Users/kaining/code/FunGather/build/iphone/Classes/TiDOMNodeProxy.h \
+  /Users/kaining/code/FunGather/build/iphone/Classes/GDataXMLNode.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/include/libxml2/libxml/tree.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/include/libxml2/libxml/xmlversion.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/usr/include/libxml2/libxml/xmlexports.h \

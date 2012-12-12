@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/ApplicationMods.m \
-  /Users/yolanda0120/Documents/gitsub/FunGather/build/iphone/Classes/ApplicationMods.h
+  /Users/kaining/code/FunGather/build/iphone/Classes/ApplicationMods.m \
+  /Users/kaining/code/FunGather/build/iphone/Classes/ApplicationMods.h
