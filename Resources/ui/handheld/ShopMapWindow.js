@@ -38,10 +38,13 @@ ShopMapWindow.prototype.createTableView = function(data) {
 	//generate the number of annotation in this area
 	var annotations = [];
 	var shopData;
+	var shopDataArr = []; // shop data index by annatations
 	for(var index = 0; index<numAnnotations;index++)
 	{
 	    shopData = data.record[index+1];//ignore Macy's just a hack, should remove +1 later'
 		Ti.API.info('this shop\'s title is '+shopData.title+shopData.shopId);
+		shopDataArr.push(shopData);
+
 		var streetImage = Titanium.Map.createAnnotation({
 			title:shopData.title,
 			animate:true,
@@ -55,16 +58,18 @@ ShopMapWindow.prototype.createTableView = function(data) {
 			leftButton:   '/images/ShopLogo_'+shopData.shopId+'_small.jpeg',
 			//image: '/images/ShopLogo_'+shopId+'.jpeg',
 			myid:index // CUSTOM ATTRIBUTE THAT IS PASSED INTO EVENT OBJECTS
+			
 	    });
 	    
 
 	    streetImage.addEventListener('click', function(evt)
 		{
 		    Ti.API.info('mapview click clicksource 2 = ' + evt.clicksource);
+		    var shop = shopDataArr[evt.source.myid];
 
-			if (evt.clicksource=='rightButton') {
+			if (evt.clicksource=='rightButton' && (shop != null)) {
 				var ShopDashboardWindow  = require('/ui/handheld/ShopDashboardWindow');
-			    var winShop = new ShopDashboardWindow(shopData);
+			    var winShop = new ShopDashboardWindow(shop);
 			    tabGroup.containingTab.open(winShop);
 			}	
 		});
