@@ -13,7 +13,7 @@ var conf = {
 	effectServer: {
 		// server: "http://localhost:8000/",
 		// server: "http://Impression-1884812429.us-west-2.elb.amazonaws.com/",
-		server: "http://www.impressionsrating.com/",
-		protocol: "http"
+		server: "https://solution4smb.appspot.com/",
+		protocol: "https"
 	},
 }

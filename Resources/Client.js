@@ -1,5 +1,5 @@
 //Public client interface
-DEBUG = true;
+DEBUG = false;
 Ti.include('/ui/common/Data.js');
 function Client() {
 	// this.applicationId = applicationId;
@@ -8,7 +8,8 @@ function Client() {
 module.exports = Client;
 
 //Parse API endpoint
-var ENDPOINT = 'http://localhost:8888/';
+// var ENDPOINT = 'http://localhost:8888/';
+var ENDPOINT = 'http://solution4smb.appspot.com/';
 
 /*
  * Make an authenticated client request.  Argument hash:
@@ -27,6 +28,7 @@ Client.prototype.request = function(args) {
 	xhr.onload = function() {
 		Ti.App.fireEvent('hide_indicator', {});
 		var response = JSON.parse(this.responseText);
+		Ti.API.info(response);
 		if (args.success && typeof(args.success) === "function") {  
         	args.success(response);  
     	} else {
