@@ -2,6 +2,7 @@ function ExploreWindow(title) {
 
 	var win = Ti.UI.createWindow({
 		title:title,
+		winId:3,
 		backgroundColor:'black'
 	});
 	this.win = win;
@@ -100,6 +101,10 @@ ExploreWindow.prototype.createTableView = function(data) {
 	});
 	//add table view to the window
 	win.add(tableview);
+	
+	var AddCentralButtonView = require('/ui/handheld/AddCentralButtonView');
+ 	AddCentralButtonView(win);
+
 	// return win;
 };
 

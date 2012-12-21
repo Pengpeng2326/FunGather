@@ -1,6 +1,7 @@
 function PerkWindow(title) {
 	var win = Ti.UI.createWindow({
 		title:title,
+		winId:2,
 		backgroundColor:'black'
 	});
 	this.win = win;
@@ -176,6 +177,8 @@ PerkWindow.prototype.createTableView = function(perkData) {
 		}
 
 	});
+	var AddCentralButtonView = require('/ui/handheld/AddCentralButtonView');
+	AddCentralButtonView(win);
 	
 	this.win.add(scrollView);
 	

@@ -14,10 +14,10 @@
         <target device="blackberry">false</target>
     </deployment-targets>
     <sdk-version>2.1.4.GA</sdk-version>
-    <id>com.pk.FunGather</id>
+    <id>com.pkapps.fungather</id>
     <name>FunGather</name>
     <version>1.0</version>
-    <publisher>ryan</publisher>
+    <publisher>peng peng</publisher>
     <url>http://</url>
     <description>not specified</description>
     <copyright>2012 by ryan</copyright>

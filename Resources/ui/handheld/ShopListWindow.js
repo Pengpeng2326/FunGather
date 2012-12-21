@@ -1,6 +1,7 @@
  function ShopListWindow(title) {
 	var self = Ti.UI.createWindow({
  		title:title,
+ 		winId:1,
  		backgroundColor:'black'
  	});
  	var that = this;
@@ -61,6 +62,9 @@
 		success: function(data){ that.createTableView(data) },
 		error: function(data, xhr) { that.onError(data, xhr) },
  	});
+ 	
+ 	var AddCentralButtonView = require('/ui/handheld/AddCentralButtonView');
+ 	AddCentralButtonView(self);
 	return self;
 }
 
